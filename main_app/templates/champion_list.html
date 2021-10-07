@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title">League Characters</h1>
+<div class='gallery'>
+    {% for champion in champions %}
+    <a href="">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-square">
+                    <img src="{{champion.image}}" alt="{{champion.name}}" />
+                </figure>
+            </div>
+            <div class="card-header">
+                <p class="card-header-title">{{champion.name}}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

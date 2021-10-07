@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="title">League Characters</h1>
+<input class="input" type="text" name="name" placeholder="name" />
+<h1 class="title pt-5">{{header}}</h1>
+    </div>
+    <div class="control">
+      <input class="button is-success" type="submit" value="Search" />
+    </div>
+  </div>
+  <!--  This anchor tag will redirect back to artist list without a query param -->
+  <a class="button is-dark" href="{% url 'characters' %}">Clear Search</a>
+  <a class="button is-dark" href="{% url 'character_create' %}">Add Character</a>
+<div class='gallery'>
+    {% for champion in champions %}
+    <a href="{% url 'character_detail' champion.pk %}">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-square">
+                    <img src="{{champion.img}}" alt="{{champion.name}}" />
+                </figure>
+            </div>
+            <div class="card-header">
+                <p class="card-header-title">{{champion.name}}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}
