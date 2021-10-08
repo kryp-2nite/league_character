@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View # <- View class to handle requests 
 from django.http import HttpResponse # <- a class to handle sending a type of response 
 from django.views.generic.base import TemplateView 
-from .models import Champion
+from .models import Champion, Abilities
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
@@ -51,3 +51,11 @@ class CharacterDelete(DeleteView):
     model = Champion
     template_name = 'character_delete_confirm.html'
     success_url = "/characters/"
+    
+class AbilityCreate(View):
+    def post(self, request, pk):
+        
+        skill1 = request.POST.get('skill1')
+        champion = Champion.objects.get(pk=pk)
+        Abilities.objects.create(skill1=skill1)
+        return redirect('character_detail', pk=pk)

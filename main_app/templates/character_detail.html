@@ -15,7 +15,48 @@
       <span class="icon">
         <i class="fas fa-trash-alt"></i>
       </span>
+      
     </a>
+    <form class="mb-5" action="{% url 'ability_create' champion.pk %}" method="post">
+        {% csrf_token %}
+        <div class="field has-addons">
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              name="skill1"
+              placeholder="Ability"
+              required
+            />
+          </div>
+          
+          <div class="control">
+            <input class="button is-primary" type="submit" value="Add Ability" />
+          </div>
+        </div>
+      </form>
+    <div class="detail__ability">
+        <h3 class="title is-3">Ability</h3>
+    
+        {% for ability in champion.abilities.all %}
+        <div class="ability-description">
+          
+          <span><b>Ultimate: {{ability.ultimate}}</b></span>
+          <br>
+          <span><b>Skill 1: {{ability.skill1}}</b></span>
+          <br>
+          <span><b>Skill 2: {{ability.skill2}}</b></span>
+          <br>
+          <span>{{ability.health}} Base Health</span>
+        </div>
+            {% empty %}
+        <article class="message">
+          <div class="message-header">
+            <p>No Abilities available</p>
+          </div>
+        </article>
+    
+        {% endfor %}
   </div>
   <div class="detail__about">
     <h4 class="title is-4">About</h4>

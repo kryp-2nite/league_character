@@ -13,3 +13,14 @@ class Champion(models.Model):
 
     class Meta:
         ordering = ['name']
+        
+class Abilities(models.Model):
+    ultimate = models.CharField(max_length=150)
+    skill1 = models.CharField(max_length=150)
+    skill2 = models.CharField(max_length=150)
+    health = models.IntegerField(default=0)
+    champion = models.ForeignKey(Champion, on_delete=models.CASCADE, related_name='abilities')
+    
+    def __str__(self):
+        return self.ultimate
+    
