@@ -9,4 +9,6 @@ urlpatterns = [
     path('characters/<int:pk>/update', views.CharacterUpdate.as_view(),name='character_update'),
     path('characters/<int:pk>/delete', views.CharacterDelete.as_view(),name='character_delete'),
     path('characters/<int:pk>/abilities/new/', views.AbilityCreate.as_view(),name='ability_create'),
+    path('accounts/signup/', views.Signup.as_view(), name="signup"),
+    path('accounts/profile', views.Profile.as_view(), name="profile")
 ]

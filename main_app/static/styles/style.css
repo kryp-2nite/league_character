@@ -74,6 +74,7 @@ body {
   .detail__container {
     margin-top: 500px;
     padding: 35px;
+    position: center;
   }
   p {
     font-size: 20px;
@@ -103,3 +104,11 @@ body {
     padding: 35px;
   }
   
+  .league-image{
+    background-position: center;
+    border: 2px white solid;
+    padding: 15px;
+  }
+  .card-image{
+    position: relative;
+  }
